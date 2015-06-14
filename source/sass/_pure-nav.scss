@@ -1,0 +1,199 @@
+//colors
+$color_tapa_approx: #777;
+$color_mine_shaft_approx: #333;
+$color_gallery_approx: #eee;
+$color_celeste_approx: #ccc;
+$color_suva_gray_approx: #888;
+$color_rangoon_green_approx: #191818;
+$color_mountain_mist_approx: #999;
+$color_curious_blue_approx: #1f8dd6;
+$white: #fff;
+$black: #000;
+$black_70: rgba(0,0,0,0.7);
+
+//@extend-elements
+//original selectors
+//.menu-link span, .menu-link span:before, .menu-link span:after
+%extend_1 {
+    background-color: $white;
+    width: 100%;
+    height: 0.2em;
+}
+
+//original selectors
+//.menu-link span:before, .menu-link span:after
+%extend_2 {
+    position: absolute;
+    margin-top: -0.6em;
+    content: " ";
+}
+
+
+body {
+    color: $color_tapa_approx;
+}
+.pure-img-responsive {
+    max-width: 100%;
+    height: auto;
+}
+#layout {
+    //Instead of the line below you could use @includetransition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+    transition: all 0.2s ease-out;
+    position: relative;
+    padding-left: 0;
+    &.active {
+        #menu {
+            left: 150px;
+            width: 150px;
+        }
+        .menu-link {
+            left: 150px;
+        }
+    }
+}
+#menu {
+    //Instead of the line below you could use @includetransition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+    transition: all 0.2s ease-out;
+    margin-left: -150px;
+    width: 150px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1000;
+    background: $color_rangoon_green_approx;
+    overflow-y: auto;
+    a {
+        color: $color_mountain_mist_approx;
+        border: none;
+        padding: 0.6em 0 0.6em 0.6em;
+    }
+    .pure-menu {
+        border: none;
+        background: transparent;
+        ul {
+            border: none;
+            background: transparent;
+            border-top: 1px solid $color_mine_shaft_approx;
+        }
+        .menu-item-divided {
+            border-top: 1px solid $color_mine_shaft_approx;
+        }
+        li a {
+            &:hover {
+                background: $color_mine_shaft_approx;
+            }
+            &:focus {
+                background: $color_mine_shaft_approx;
+            }
+        }
+    }
+    .pure-menu-selected {
+        background: $color_curious_blue_approx;
+        a {
+            color: $white;
+        }
+    }
+    .pure-menu-heading {
+        background: $color_curious_blue_approx;
+        font-size: 110%;
+        color: $white;
+        margin: 0;
+    }
+}
+.menu-link {
+    //Instead of the line below you could use @includetransition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+    transition: all 0.2s ease-out;
+    position: fixed;
+    display: block;
+    top: 0;
+    left: 0;
+    background: $black;
+    background: $black_70;
+    font-size: 10px;
+    z-index: 10;
+    width: 2em;
+    height: auto;
+    padding: 2.1em 1.6em;
+    &:hover {
+        background: $black;
+    }
+    &:focus {
+        background: $black;
+    }
+    span {
+        position: relative;
+        display: block;
+        @extend %extend_1;
+        &:before {
+            @extend %extend_1;
+            @extend %extend_2;
+        }
+        &:after {
+            @extend %extend_1;
+            @extend %extend_2;
+            margin-top: 0.6em;
+        }
+    }
+}
+.content {
+    margin: 0 auto;
+    padding: 0 2em;
+    max-width: 800px;
+    margin-bottom: 50px;
+    line-height: 1.6em;
+}
+.header {
+    margin: 0;
+    color: $color_mine_shaft_approx;
+    text-align: center;
+    padding: 2.5em 2em 0;
+    border-bottom: 1px solid $color_gallery_approx;
+    h1 {
+        margin: 0.2em 0;
+        font-size: 3em;
+        font-weight: 300;
+    }
+    h2 {
+        font-weight: 300;
+        color: $color_celeste_approx;
+        padding: 0;
+        margin-top: 0;
+    }
+}
+.content-subhead {
+    margin: 50px 0 20px;
+    font-weight: 300;
+    color: $color_suva_gray_approx;
+}
+@media(min-width: 48em) {
+    .header {
+        padding-left: 2em;
+        padding-right: 2em;
+    }
+    .content {
+        padding-left: 2em;
+        padding-right: 2em;
+    }
+    #layout {
+        padding-left: 150px;
+        left: 0;
+        &.active .menu-link {
+            left: 150px;
+        }
+    }
+    #menu {
+        left: 150px;
+    }
+    .menu-link {
+        position: fixed;
+        left: 150px;
+        display: none;
+    }
+}
+@media(max-width: 48em) {
+    #layout.active {
+        position: relative;
+        left: 150px;
+    }
+}

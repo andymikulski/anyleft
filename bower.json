@@ -19,6 +19,8 @@
   "dependencies": {
     "pure": "~0.6.0",
     "highland": "~2.5.1",
-    "async": "~1.2.1"
+    "async": "~1.2.1",
+    "jquery": "~2.1.4",
+    "font-awesome": "~4.3.0"
   }
 }

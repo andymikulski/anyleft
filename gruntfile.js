@@ -5,10 +5,10 @@
 module.exports = function(grunt) {
 
   var scriptSource = 'source/ts',
-    scriptBuild = 'public/js',
-    scriptMin = 'public/js/min',
+    scriptBuild = 'public/assets/js',
+    scriptMin = 'public/assets/js/min',
     stylesSource = 'source/sass',
-    stylesBuild = 'public/css',
+    stylesBuild = 'public/assets/css',
     mainScript = 'app',
 
     // needed later
