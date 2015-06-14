@@ -164,16 +164,17 @@ module.exports = function(grunt) {
     watch: {
       js: {
         files: [scriptSource + '/**/*.ts'],
-        tasks: ['ts:dev']
+        tasks: ['tslint', 'ts:dev']
       },
       css: {
         files: [stylesSource + '/**/*.scss'],
         tasks: ['compass:dev']
       }
     },
+
     bower_concat: {
       all: {
-        dest: scriptBuild + '/bower.js',
+        dest: scriptBuild + '/lib/bower.js',
         cssDest: stylesBuild + '/bower.css',
         exclude: [],
         dependencies: {
@@ -195,7 +196,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-compass');
   grunt.loadNpmTasks('grunt-tslint');
 
-  grunt.registerTask('dev', ['ts:dev', 'compass:dev', 'watch']);
+  grunt.registerTask('bower', ['bower_concat']);
+
+  grunt.registerTask('dev', ['tslint', 'ts:dev', 'compass:dev', 'watch']);
   grunt.registerTask('build', ['compass:clean', 'compass:build', 'tslint', 'ts:prod', 'requirejs:compile', 'concat']);
   grunt.registerTask('build-js', ['tslint', 'ts:prod', 'requirejs:compile', 'concat']);
   grunt.registerTask('build-css', ['compass:clean', 'compass:build']);
