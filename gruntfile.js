@@ -9,6 +9,7 @@ module.exports = function(grunt) {
     scriptMin = 'public/assets/js/min',
     stylesSource = 'source/sass',
     stylesBuild = 'public/assets/css',
+    viewsSource = 'source/views/',
     mainScript = 'app',
 
     // needed later
@@ -164,11 +165,24 @@ module.exports = function(grunt) {
     watch: {
       js: {
         files: [scriptSource + '/**/*.ts'],
-        tasks: ['tslint', 'ts:dev']
+        tasks: ['tslint', 'ts:dev'],
+        options: {
+          livereload: true
+        }
       },
       css: {
         files: [stylesSource + '/**/*.scss'],
-        tasks: ['compass:dev']
+        tasks: ['compass:dev'],
+        options: {
+          livereload: true
+        }
+      },
+      hbs: {
+        files: [viewsSource + '/**/*.hbs'],
+        tasks: [],
+        options: {
+          livereload: true
+        }
       }
     },
 
