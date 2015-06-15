@@ -20,28 +20,12 @@
       <img src="assets/img/icons/menu.png" />
     </a>
 
-    <div id="menu">
-      <div class="pure-menu">
-        <a class="pure-menu-heading" href="/">AnyLeft</a>
-
-        <ul class="pure-menu-list">
-          {{#if user}}
-            <li class="pure-menu-item">{{ user.username }}</li>
-            <li class="pure-menu-item"><a href="/pantry" class="pure-menu-link">Your Items</a></li>
-            <li class="pure-menu-item"><a href="/logout" class="pure-menu-link">Log Out</a></li>
-          {{else}}
-            <li class="pure-menu-item"><a href="/pantry" class="pure-menu-link">Your Items</a></li>
-            <li class="pure-menu-item"><a href="/register" class="pure-menu-link">Sign Up</a></li>
-            <li class="pure-menu-item"><a href="/login" class="pure-menu-link">Log In</a></li>
-          {{/if}}
-        </ul>
-      </div>
-    </div>
+    {{> global/menu}}
 
     <div id="main">
       {{{body}}}
 
-      <div class="copyright">&copy; AnyLeft 2015</div>
+      {{> global/copyright}}
     </div>
 
   </div>

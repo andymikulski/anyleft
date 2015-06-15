@@ -27,6 +27,12 @@ html, body {
 	text-align: center !important;
 }
 
+.has-low-contrast {
+	color: #ccc;
+	font-family: Georgia, serif;
+	font-style: italic;
+}
+
 .pure-button {
 	&.button-success {
         color: #fff;
@@ -52,6 +58,14 @@ html, body {
     }
 }
 
+.pure-g {
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 1200px;
+	max-width: 85.71428571428571rem;
+	width: 70vw;
+}
+
 
 
 #layout, #main, .content {
@@ -60,13 +74,13 @@ html, body {
 
 
 .content {
-	padding-bottom: 3em;
+	padding-bottom: 5em;
 }
 .copyright {
 	bottom: 0;
 	font-family: 'Abel', sans-serif;
 	font-size: 10px;
-	font-size: 0.625rem;
+	font-size: 0.7142857142857143rem;
 	left: 0;
 	letter-spacing: 0.1em;
 	padding-bottom: 0.5em;
@@ -74,11 +88,23 @@ html, body {
 	right: 0;
 	text-align: center;
 	text-transform: uppercase;
+
+	@media(min-width: 48em) {
+		left: 150px;
+	}
+}
+
+.highlight {
+	background: #f0f0f0;
+	display: block;
+	padding: 1em;
+	padding: 1rem;
 }
 
 .pantry {
 	.pantry-item {
-		margin: 1rem 0;
+		margin: 1em auto;
+		margin: 1rem auto;
 
 		img {
 			display: block;
@@ -106,4 +132,30 @@ html, body {
 			margin-bottom: 1rem;
 		}
 	}
+
+	.pantry-item__increment {
+		img {
+			cursor: pointer;
+		}
+	}
+	.pantry-item__done {
+		opacity: 0.4;
+		pointer-events: none;
+		&, * {
+			cursor: default;
+		}
+
+		&.is-enabled {
+			opacity: 1;
+			pointer-events: auto;
+			img {
+				cursor: pointer;
+			}
+		}
+	}
+}
+
+.home-blurb {
+	padding: 0 1em;
+	padding: 0 1rem;
 }

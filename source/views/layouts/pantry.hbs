@@ -1,28 +1,46 @@
 <div class="header">
-	<h1>{{ user.username }}'s Pantry</h1>
-	<h2>Tracking {{ user.items.length }} items</h2>
+	<h1>{{ pantry.username }}'s Pantry</h1>
+	<h2>Tracking {{ pantry.items.length }} items</h2>
 </div>
 
 <div class="content pantry">
-	<p class="has-centered-text" style="margin-bottom: 5rem">
+	{{#if pantry.yourPantry }}
+	<p class="has-centered-text has-low-contrast" style="margin-bottom: 5rem">
 		Here you can find the items you are currently tracking.
 	</p>
+	{{/if}}
 
-	{{#each user.items}}
-	  {{!-- {{@index}}: {{this}} --}}
-		<div class="pure-g pantry-item" data-id="{{ this.id }}">
-			<div class="pure-u-1-5">
-				<img src="assets/img/icons/solid-plus.png" />
+
+	{{#each pantry.items}}
+		<div class="pure-g pantry-item" data-id="{{ this.id }}" data-index="{{ @index }}">
+			{{#if ../pantry.yourPantry }}
+				<div class="pure-u-1-5 pantry-item__increment">
+					<img src="assets/img/icons/plus.png" />
+				</div>
+			{{/if}}
+			<div class="pure-u-3-5">
+				<h2>{{ this.name }}</h2>
 			</div>
-			<div class="pure-u-3-5">{{ this.name }}</div>
-			<div class="pure-u-1-5">
-				<img src="assets/img/icons/solid-ok.png" />
-			</div>
+			{{#if ../pantry.yourPantry }}
+				{{#if this.useCount}}
+					<div class="pure-u-1-5 pantry-item__done is-enabled">
+							<img src="assets/img/icons/solid-ok.png" />
+					</div>
+				{{else}}
+					<div class="pure-u-1-5 pantry-item__done">
+						<img src="assets/img/icons/done.png" />
+					</div>
+				{{/if}}
+			{{/if}}
 		</div>  
 	{{/each}}
 
-	<p class="has-centered-text">
-		Click the <span class="pantry-img-caption"><img src="assets/img/icons/solid-plus.png" /></span> when you use an item.<br />When you are out, click the <span class="pantry-img-caption"><img src="assets/img/icons/solid-ok.png" /></span>.<br />Clicking an item name will bring up more information.
-	</p>
+	{{#if pantry.yourPantry }}
+		<p class="has-centered-text">
+			Click the <span class="pantry-img-caption"><img src="assets/img/icons/solid-plus.png" /></span> when you use an item.<br />When you are out, click the <span class="pantry-img-caption"><img src="assets/img/icons/solid-ok.png" /></span>.<br />Clicking an item name will bring up more information.
+		</p>
+	{{ else }}
+		{{> global/signup-cta}}
+	{{/if}}
 
 </div>

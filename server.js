@@ -129,6 +129,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use('/assets', express.static(path.join(__dirname, 'public/assets')));
+app.use('/pantry/assets', express.static(path.join(__dirname, 'public/assets')));
 
 
 // Session-persisted message middleware
@@ -164,9 +165,7 @@ app.set('view engine', '.hbs');
 //displays our homepage
 app.get('/', function(req, res) {
   if (req.isAuthenticated()) {
-    res.render('pantry', {
-      user: req.user
-    });
+    res.redirect('pantry');
   } else {
     res.render('home', {
       user: req.user
@@ -175,7 +174,7 @@ app.get('/', function(req, res) {
 });
 
 //displays our signup page
-app.get('/login', function(req, res) {
+app.get('/log-?in', function(req, res) {
   if (req.isAuthenticated()) {
     res.redirect('pantry');
   } else {
@@ -198,27 +197,63 @@ app.get('/in', function(req, res) {
   }
 });
 
-app.get('/pantry', function(req, res) {
+
+// route /pantry should be 'Your Pantry'
+// so we check if authenticated,
+// should check if it's the same user,
+// then displays (or redirects if not the same user)
+app.get('/pantry+', function(req, res) {
   // if (req.isAuthenticated()) {
   res.render('pantry', {
+    pantry: {
+      'yourPantry': true,
+      'username': 'andymikulski',
+      'id': 123,
+      'items': [{
+        'id': 111,
+        'name': 'Test Product 1',
+        'useCount': 0,
+        'totalCount': null
+      }, {
+        'id': 222,
+        'name': 'Test Product 2',
+        'useCount': 3,
+        'totalCount': 6
+      }]
+    },
+    // faking the user here
+    // (in theory this would be populated anyway by the session stuff)
     user: {
       'username': 'andymikulski',
+      'id': 123
+    }
+  });
+  // } else {
+  // res.redirect('/');
+  // }
+});
+
+// grab specific pantry
+// (for sharing)
+app.get('/pantry+/:id', function(req, res) {
+  res.render('pantry', {
+    pantry: {
+      'yourPantry': false,
+      'username': 'someone_else',
+      'id': req.params.id,
       'items': [{
-        'id': 123,
-        'name': 'Test Product 1',
+        'id': 333,
+        'name': 'Test Product 3',
         'useCount': 5,
         'totalCount': null
       }, {
-        'id': 234,
-        'name': 'Test Product 2',
+        'id': 444,
+        'name': 'Test Product 4',
         'useCount': 3,
         'totalCount': 6
       }]
     }
   });
-  // } else {
-  // res.redirect('/in');
-  // }
 });
 
 //sends the request through our local signup strategy, and if successful takes user to homepage, otherwise returns then to signin page
