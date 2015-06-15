@@ -1284,18 +1284,34 @@ html h1, html h2, html h3, html h4, html h5, html h6, body h1, body h2, body h3,
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
   background-color: #1CB841;
 }
+/* line 38, ../../../source/sass/app.scss */
+.pure-button.button-xsmall {
+  font-size: 70%;
+}
+/* line 42, ../../../source/sass/app.scss */
+.pure-button.button-small {
+  font-size: 85%;
+}
+/* line 46, ../../../source/sass/app.scss */
+.pure-button.button-large {
+  font-size: 110%;
+}
+/* line 50, ../../../source/sass/app.scss */
+.pure-button.button-xlarge {
+  font-size: 125%;
+}
 
-/* line 39, ../../../source/sass/app.scss */
+/* line 57, ../../../source/sass/app.scss */
 #layout, #main, .content {
   min-height: 100%;
 }
 
-/* line 44, ../../../source/sass/app.scss */
+/* line 62, ../../../source/sass/app.scss */
 .content {
   padding-bottom: 3em;
 }
 
-/* line 47, ../../../source/sass/app.scss */
+/* line 65, ../../../source/sass/app.scss */
 .copyright {
   bottom: 0;
   font-family: 'Abel', sans-serif;
@@ -1310,18 +1326,18 @@ html h1, html h2, html h3, html h4, html h5, html h6, body h1, body h2, body h3,
   text-transform: uppercase;
 }
 
-/* line 62, ../../../source/sass/app.scss */
+/* line 80, ../../../source/sass/app.scss */
 .pantry .pantry-item {
   margin: 1rem 0;
 }
-/* line 65, ../../../source/sass/app.scss */
+/* line 83, ../../../source/sass/app.scss */
 .pantry .pantry-item img {
   display: block;
   margin: 0 auto;
   max-height: 100%;
   max-width: 100%;
 }
-/* line 73, ../../../source/sass/app.scss */
+/* line 91, ../../../source/sass/app.scss */
 .pantry .pantry-img-caption {
   display: inline-block;
   max-height: 1em;
@@ -1329,12 +1345,12 @@ html h1, html h2, html h3, html h4, html h5, html h6, body h1, body h2, body h3,
   position: relative;
   top: 0.25em;
 }
-/* line 80, ../../../source/sass/app.scss */
+/* line 98, ../../../source/sass/app.scss */
 .pantry .pantry-img-caption img {
   max-height: 100%;
   max-width: 100%;
 }
-/* line 85, ../../../source/sass/app.scss */
+/* line 103, ../../../source/sass/app.scss */
 .pantry .pantry-img-caption + br {
   content: '';
   display: block;

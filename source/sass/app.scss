@@ -34,7 +34,25 @@ html, body {
         text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
 		background-color: #1CB841;
 	}
+
+	&.button-xsmall {
+        font-size: 70%;
+    }
+
+    &.button-small {
+        font-size: 85%;
+    }
+
+    &.button-large {
+        font-size: 110%;
+    }
+
+    &.button-xlarge {
+        font-size: 125%;
+    }
 }
+
+
 
 #layout, #main, .content {
 	min-height: 100%;
