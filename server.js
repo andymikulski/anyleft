@@ -7,6 +7,7 @@ var fs = require('fs'),
   cookieParser = require('cookie-parser'),
   bodyParser = require('body-parser'),
   methodOverride = require('method-override'),
+  favicon = require('serve-favicon'),
 
   session = require('express-session'),
   redis = require('redis'),
@@ -19,13 +20,16 @@ var fs = require('fs'),
   exphbs = require('express-handlebars'),
 
   LocalStrategy = require('passport-local'),
-  // TwitterStrategy = require('passport-twitter'),
-  // GoogleStrategy = require('passport-google'),
-  // FacebookStrategy = require('passport-facebook'),
+  TwitterStrategy = require('passport-twitter'),
+  GoogleStrategy = require('passport-google'),
+  FacebookStrategy = require('passport-facebook'),
 
   app = express(),
   http = require('http').Server(app),
-  io = require('socket.io').listen(http);
+  io = require('socket.io').listen(http),
+
+  config = require('./config.js'), //config file contains all tokens and other private info
+  funct = require('./functions.js'); //funct file contains our helper functions for our Passport and database work
 
 
 app.set('port', (process.env.PORT || 3000));
@@ -106,8 +110,8 @@ function ensureAuthenticated(req, res, next) {
 
 // Configure Express
 app.use(morgan('dev'));
+// app.use(favicon(path.join(__dirname, 'public/favicon.ico')));
 app.use(cookieParser());
-
 app.use(bodyParser.urlencoded({
   extended: true
 }));
@@ -159,29 +163,93 @@ app.set('view engine', '.hbs');
 //===============ROUTES=================
 //displays our homepage
 app.get('/', function(req, res) {
-  res.render('home', {
-    user: req.user
-  });
+  if (req.isAuthenticated()) {
+    res.render('pantry', {
+      user: req.user
+    });
+  } else {
+    res.render('home', {
+      user: req.user
+    });
+  }
 });
 
 //displays our signup page
-app.get('/signin', function(req, res) {
-  res.render('signin');
+app.get('/login', function(req, res) {
+  if (req.isAuthenticated()) {
+    res.redirect('pantry');
+  } else {
+    res.render('login');
+  }
+});
+app.get('/register', function(req, res) {
+  if (req.isAuthenticated()) {
+    res.redirect('pantry');
+  } else {
+    res.render('register');
+  }
+});
+
+app.get('/in', function(req, res) {
+  if (req.isAuthenticated()) {
+    res.redirect('pantry');
+  } else {
+    res.render('getin');
+  }
+});
+
+app.get('/pantry', function(req, res) {
+  // if (req.isAuthenticated()) {
+  res.render('pantry', {
+    user: {
+      'username': 'andymikulski',
+      'items': [{
+        'id': 123,
+        'name': 'Test Product 1',
+        'useCount': 5,
+        'totalCount': null
+      }, {
+        'id': 234,
+        'name': 'Test Product 2',
+        'useCount': 3,
+        'totalCount': 6
+      }]
+    }
+  });
+  // } else {
+  // res.redirect('/in');
+  // }
 });
 
 //sends the request through our local signup strategy, and if successful takes user to homepage, otherwise returns then to signin page
-app.post('/local-reg', passport.authenticate('local-signup', {
+app.post('/register', passport.authenticate('local-signup', {
   successRedirect: '/',
   failureRedirect: '/signin'
 }));
 
 //sends the request through our local login/signin strategy, and if successful takes user to homepage, otherwise returns then to signin page
-app.post('/login', passport.authenticate('local-signin', {
+app.post('/login-please', passport.authenticate('local-signin', {
   successRedirect: '/',
   failureRedirect: '/signin'
 }));
 
 //logs user out of site, deleting them from the session, and returns to homepage
+app.get('/logout', function(req, res) {
+  if (req && req.user) {
+    var name = req.user.username;
+    console.log("LOGGIN OUT " + req.user.username)
+    req.logout();
+    res.redirect('/');
+    req.session.notice = "You have successfully been logged out " + name + "!";
+  } else {
+    req.logout && req.logout();
+    res.redirect('/');
+    req.session.notice = "You have successfully been logged out!";
+  }
+});
+
+
+
 app.get('/logout', function(req, res) {
   var name = req.user.username;
   console.log("LOGGIN OUT " + req.user.username)

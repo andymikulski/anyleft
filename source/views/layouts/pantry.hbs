@@ -1,0 +1,28 @@
+<div class="header">
+	<h1>{{ user.username }}'s Pantry</h1>
+	<h2>Tracking {{ user.items.length }} items</h2>
+</div>
+
+<div class="content pantry">
+	<p class="has-centered-text" style="margin-bottom: 5rem">
+		Here you can find the items you are currently tracking.
+	</p>
+
+	{{#each user.items}}
+	  {{!-- {{@index}}: {{this}} --}}
+		<div class="pure-g pantry-item" data-id="{{ this.id }}">
+			<div class="pure-u-1-5">
+				<img src="assets/img/icons/solid-plus.png" />
+			</div>
+			<div class="pure-u-3-5">{{ this.name }}</div>
+			<div class="pure-u-1-5">
+				<img src="assets/img/icons/solid-ok.png" />
+			</div>
+		</div>  
+	{{/each}}
+
+	<p class="has-centered-text">
+		Click the <span class="pantry-img-caption"><img src="assets/img/icons/solid-plus.png" /></span> when you use an item.<br />When you are out, click the <span class="pantry-img-caption"><img src="assets/img/icons/solid-ok.png" /></span>.<br />Clicking an item name will bring up more information.
+	</p>
+
+</div>

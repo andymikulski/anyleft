@@ -1,0 +1,15 @@
+{
+	"folders":
+	[
+		{
+			"folder_exclude_patterns":
+			[
+				".sass-cache",
+				".tscache",
+				"node_modules",
+				"bower_components"
+			],
+			"path": "."
+		}
+	]
+}

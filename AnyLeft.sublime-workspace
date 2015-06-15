@@ -1,0 +1,909 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"app",
+				"ApplicationCache	interface"
+			],
+			[
+				"styl",
+				"stylesBuild"
+			],
+			[
+				"command",
+				"commandedChannels"
+			],
+			[
+				"CLient",
+				"CLIENT"
+			],
+			[
+				"gener",
+				"generatedName"
+			],
+			[
+				"F",
+				"ForceGuest"
+			],
+			[
+				"procs",
+				"processQueue"
+			],
+			[
+				"manage",
+				"manageButton"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 167.0,
+		"last_filter": "format",
+		"selected_items":
+		[
+			[
+				"format",
+				"Format: Javascript"
+			],
+			[
+				"for",
+				"Format: Javascript"
+			],
+			[
+				"rein",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"instl",
+				"Package Control: Install Package"
+			],
+			[
+				"form",
+				"Format: Javascript"
+			],
+			[
+				"javasc",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"reind",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"remo",
+				"Package Control: Remove Package"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"forma",
+				"Format: Javascript"
+			],
+			[
+				"install ",
+				"Package Control: Install Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"fort",
+				"File: Open In Browser - Testing Server"
+			],
+			[
+				"Form",
+				"Format: Javascript"
+			],
+			[
+				"space",
+				"Indentation: Convert to Spaces"
+			],
+			[
+				"inden",
+				"Indentation: Convert to Spaces"
+			],
+			[
+				"spaces",
+				"Indentation: Convert to Spaces"
+			],
+			[
+				"in",
+				"Package Control: Install Package"
+			],
+			[
+				"text",
+				"Set Syntax: Plain Text"
+			],
+			[
+				"te",
+				"Set Syntax: LaTeX Beamer"
+			],
+			[
+				"ht",
+				"Set Syntax: HTML (Tcl)"
+			],
+			[
+				"tex",
+				"Set Syntax: LaTeX Beamer"
+			],
+			[
+				"st",
+				"Set Syntax: Tcl"
+			],
+			[
+				"java",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"j",
+				"Set Syntax: JSON"
+			],
+			[
+				"rub",
+				"Set Syntax: Ruby"
+			],
+			[
+				"acit",
+				"Set Syntax: ActionScript"
+			],
+			[
+				"as",
+				"Set Syntax: AppleScript"
+			],
+			[
+				"javad",
+				"Set Syntax: JavaDoc"
+			],
+			[
+				"ja",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"irc",
+				"Set Syntax: IRC"
+			],
+			[
+				"inde",
+				"Indentation: Convert to Spaces"
+			],
+			[
+				"For",
+				"Format: Javascript"
+			],
+			[
+				"javsc",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"jsn",
+				"Set Syntax: JSON"
+			],
+			[
+				"sass",
+				"Set Syntax: Sass"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"package",
+				"Preferences: Browse Packages"
+			]
+		],
+		"width": 467.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+	],
+	"file_history":
+	[
+		"/Users/andy/Documents/Dev/anyleft/source/views/layouts/home.hbs",
+		"/Users/andy/Documents/Dev/anyleft/server.js",
+		"/Users/andy/Documents/Dev/anyleft/source/views/layouts/main.hbs",
+		"/Users/andy/Documents/Dev/anyleft/gruntfile.js",
+		"/Users/andy/Documents/Dev/anyleft/views/layouts/main.handlebars.html",
+		"/Users/andy/Documents/Dev/anyleft/public/index.html",
+		"/Users/andy/Documents/Dev/anyleft/config.rb",
+		"/Users/andy/Documents/Dev/anyleft/source/ts/app.ts",
+		"/Users/andy/Documents/Dev/anyleft/server2.js",
+		"/Users/andy/Documents/Dev/anyleft/bower_components/require/build/require.min.js",
+		"/Users/andy/Documents/Dev/anyleft/public/test.html",
+		"/Users/andy/Documents/Dev/anyleft/source/sass/_pure-nav.scss",
+		"/Users/andy/Documents/Dev/anyleft/source/sass/app.scss",
+		"/Users/andy/Documents/Dev/anyleft/package.json",
+		"/Users/andy/Documents/Dev/anyleft/node_modules/express/lib/express.js",
+		"/Users/andy/Documents/Dev/anyleft/public/css/bower.css",
+		"/Users/andy/Documents/Dev/anyleft/bower.json",
+		"/Users/andy/Documents/Dev/anyleft/public/css/main.css",
+		"/Users/andy/Documents/Dev/anyleft/public/js/app.js",
+		"/Users/andy/Documents/Dev/anyleft/public/js/bower.js",
+		"/Users/andy/Documents/Dev/anyleft/bower_components/react-router/build/lib/createRouter.js",
+		"/Users/andy/Documents/Dev/anyleft/source/sass/main.scss",
+		"/Users/andy/Documents/Dev/anyleft/bower_components/react-router/build/lib/locations/HistoryLocation.js",
+		"/Users/andy/Documents/Dev/anyleft/bower_components/react-router/build/umd/ReactRouter.js",
+		"/Users/andy/Documents/Dev/anyleft/source/jsx/app.jsx",
+		"/Users/andy/Documents/Dev/anyleft/README.md",
+		"/Users/andy/Documents/Dev/anyleft/bower_components/pure/pure.css",
+		"/Users/andy/Documents/Dev/anyleft/node_modules/grunt-bower-concat/Gruntfile.js",
+		"/Users/andy/Documents/Dev/anyleft/sass/app.scss",
+		"/Users/andy/Documents/Dev/anyleft/public/jsx/example.jsx",
+		"/Users/andy/Documents/Dev/anyleft/source/server/server.js",
+		"/Users/andy/Documents/Dev/anyleft/app.json",
+		"/Users/andy/Documents/Dev/anyleft/public/js",
+		"/Users/andy/Documents/Dev/website/Resort.Website/Views/Renderings/_PromoItem.cshtml",
+		"/Users/andy/Documents/Dev/website/Resort.Website/Content/Whistler-Blackcomb/styles/scss/module/_title-card.scss",
+		"/Users/andy/Documents/Dev/website/Resort.Website/Content/Whistler-Blackcomb/styles/scss/module/_hero.scss",
+		"/Users/andy/Documents/Dev/website/Resort.Website/Views/Layouts/Partials/_PrimaryNavigation.cshtml",
+		"/Users/andy/Documents/Dev/website/Resort.Website/Content/Whistler-Blackcomb/styles/scss/module/_weather-dashboard.scss",
+		"/Users/andy/Documents/Dev/website/Resort.Website/Content/Whistler-Blackcomb/styles/scss/_colors.scss",
+		"/Users/andy/Documents/Dev/website/Resort.Website/Content/Whistler-Blackcomb/styles/scss/module/_supernav.scss",
+		"/Users/andy/Documents/Dev/website/Resort.Website/Views/Weather/_MountainCams.cshtml",
+		"/Users/andy/Documents/Dev/website/Resort.Website/Views/Renderings/_NavPromo.cshtml",
+		"/Users/andy/Documents/Dev/website/frontend/index.html",
+		"/Users/andy/Documents/Dev/website/Resort.Website/Content/Whistler-Blackcomb/styles/scss/themes/summer.scss",
+		"/Users/andy/Documents/Dev/website/Resort.Website/Content/Whistler-Blackcomb/styles/scss/module/_three-col.scss",
+		"/Users/andy/Documents/Dev/website/Resort.Website/Content/Whistler-Blackcomb/styles/scss/module/_social.scss",
+		"/Users/andy/Documents/Dev/website/Resort.Website/Content/Whistler-Blackcomb/js/widgets/carousel.js",
+		"/Users/andy/Documents/Dev/website/Resort.Website/Content/Whistler-Blackcomb/styles/scss/module/_carousel.scss",
+		"/Users/andy/Documents/Dev/website/Resort.Website/Views/Layouts/Partials/_WeatherMiniDashboard.cshtml",
+		"/Users/andy/Documents/Dev/website/Resort.Website/Content/Whistler-Blackcomb/styles/scss/_extensions.scss",
+		"/Users/andy/Documents/Dev/website/Resort.Website/Content/Whistler-Blackcomb/styles/css/main.css",
+		"/Users/andy/Documents/Dev/website/Resort.Website/Content/Whistler-Blackcomb/js/widgets/liftMap.js",
+		"/Users/andy/Documents/Dev/anyleft/public/scripts/example.jsx",
+		"/Users/andy/Documents/Dev/anyleft/comments.json",
+		"/Users/andy/Documents/Dev/latergator/latergator.js",
+		"/Users/andy/Documents/Dev/latergator/README.md",
+		"/Users/andy/Documents/Dev/Client/develop/global/scss/global.scss",
+		"/Users/andy/Documents/Dev/Client/develop/global/js/global/chat.js",
+		"/Users/andy/Documents/Dev/Client/develop/global/js/features/navbar.js",
+		"/Users/andy/Documents/Dev/Client/develop/global/js/features/hideButton.js",
+		"/Users/andy/Documents/Dev/Client/develop/global/js/features/expandButton.js",
+		"/Users/andy/Documents/Dev/Client/develop/global/js/global/playlist.js",
+		"/Users/andy/Documents/Dev/Client/develop/global/js/features/catAttack.js",
+		"/Users/andy/Documents/Dev/Client/develop/global/js/app.js",
+		"/Users/andy/Documents/Dev/Client/;ASKJDF ;ALKSDJF ;ALKSDJF ;ALSKDJF ASDF",
+		"/Users/andy/Documents/Dev/Client/develop/global/js/global/responsive.js",
+		"/Users/andy/Documents/Dev/Client/global/js/main.js",
+		"/Users/andy/Documents/Dev/Client/develop/global/js/global/main.js",
+		"/Users/andy/Documents/Dev/Client/develop/global/js/global/forceguest.js",
+		"/Users/andy/Documents/Dev/Client/develop/global/js/global/analytics.js",
+		"/Users/andy/Documents/Dev/Client/develop/global/js/global/adminCommands.js",
+		"/Users/andy/Documents/Dev/Client/develop/global/js/features/emotes.js",
+		"/Users/andy/Documents/Dev/Client/node_modules/grunt-contrib-uglify/node_modules/lodash/object/forOwnRight.js",
+		"/Users/andy/Documents/Dev/Client/develop/global/js/global/forceGuest.js",
+		"/Users/andy/Documents/Dev/Client/develop/global/js/global/admincommands.js",
+		"/Users/andy/Documents/Dev/Client/develop/global/js/global/adminpoll.js",
+		"/Users/andy/Documents/Dev/Client/develop/global/js/features/notifications.js",
+		"/Users/andy/Documents/Dev/Client/develop/global/js/features/stormMode.js",
+		"/Users/andy/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Users/andy/Documents/Dev/Client/develop/global/scss/_nrchat5.scss",
+		"/Users/andy/Documents/Dev/Client/develop/global/scss/_not-responsive.scss",
+		"/Users/andy/Documents/Dev/Client/develop/global/js/main.js",
+		"/Users/andy/Documents/Dev/Client/config.rb",
+		"/Users/andy/Documents/Dev/Client/gruntfile.js",
+		"/Users/andy/Documents/Dev/Client/deploy/global/js/app.js",
+		"/Users/andy/Documents/Dev/Client/deploy/global/js/main.js",
+		"/Users/andy/Documents/Dev/Client/develop/global/scss/_fonts.scss",
+		"/Users/andy/Documents/Dev/Client/deploy/global/css/global.css",
+		"/Users/andy/Documents/Dev/Client/develop/global/scss/_deprecated.scss",
+		"/Users/andy/Documents/Dev/Client/app.js",
+		"/Users/andy/Documents/Dev/Client/develop/global/scss/_variables.scss",
+		"/Users/andy/Desktop/fuck you nreboot",
+		"/Users/andy/Desktop/ntv-launch-list.txt",
+		"/Users/andy/Desktop/ntv-json.js"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+			"*.js",
+			"*.scss",
+			"*.cshtml",
+			"*.cs*",
+			"*.scss",
+			"*.cs*",
+			"*.scss",
+			"*.cs*",
+			"*.scss",
+			"*.js",
+			"*.scss",
+			"*.js",
+			"",
+			"*.js",
+			"",
+			"*.scss",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"favicon",
+			"_/img/",
+			"^(.*)?.png",
+			".png",
+			"io",
+			"http",
+			"stylesBuild",
+			"=\"js",
+			"js",
+			"href=\"",
+			"public/",
+			"app.use(",
+			"app",
+			"(",
+			"('",
+			"'",
+			"=",
+			"engine",
+			"redisstore",
+			"RedisStore",
+			"exphbs",
+			"router",
+			"app.router",
+			"logger",
+			"express.",
+			"bodyParser",
+			"cookieParser",
+			"logger",
+			"passport",
+			"config.",
+			"config",
+			"GoolgeStrategy",
+			"express",
+			"css",
+			"main",
+			"header",
+			"normalize",
+			"lint",
+			"require",
+			"scriptmin + ",
+			"public",
+			"mainScript",
+			"assets/scripts/min",
+			"assets/scripts",
+			"main.ts",
+			"assets/scripts/build",
+			"build",
+			"assets/scripts/build",
+			"assets/scripts/buil",
+			"assets/scripts",
+			"assets/scripts/build",
+			"source/",
+			"assets/styles/sass",
+			"assets/scripts/build/",
+			"\"",
+			"assets/scripts/src",
+			"play:",
+			"play",
+			"; ",
+			"historylocation",
+			"history",
+			"browserhistory",
+			"users",
+			"CommentBox",
+			"client",
+			";\nvar ",
+			"class=",
+			"<br>",
+			"<img",
+			"CommentBox",
+			"g-",
+			"grid",
+			"public",
+			"('comments.j",
+			"comments.j",
+			"build",
+			"cap-header",
+			"more",
+			"promo-title",
+			".switch",
+			"100vh",
+			"module__hero",
+			"<!--",
+			"100ms",
+			"menu-side__left",
+			"menu-side__right",
+			"NavPromo",
+			"menu-side__Right",
+			"promo",
+			"promo-item",
+			"@Html.Partial(\"~/Views/Renderings/_PromoItem.cshtml\"",
+			"promo-item",
+			"30",
+			"promo-item",
+			"module__three-column",
+			"300ms);",
+			".menu",
+			".switch",
+			"switch",
+			"nav-rule",
+			"nav",
+			":before",
+			"$gray",
+			"switch",
+			"weather-info",
+			"lift-tooltip",
+			"generateTooltip",
+			"widget.element",
+			"window",
+			"lift-tooltip",
+			"page",
+			"lift-tooltip",
+			"tooltip",
+			"gondolaSwitchDelay",
+			"onLiftOver",
+			"generateTooltip",
+			"resize",
+			",",
+			"currentImage",
+			"*",
+			" -",
+			"max-",
+			"-68%",
+			"module__social",
+			"comments.json",
+			"example",
+			"*",
+			"waitertarget"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+			"=$1= <img src=\"http://nreboot.com/chanassets/global/img/emoticons/$1.png\" /><br />",
+			"case '$1': $2break;",
+			"case '$1': $2\\nbreak;",
+			"})(window.NR || {}, jQuery, window, document);",
+			"(function(NR, $, window, document, undefined) {",
+			"notification"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 27.0
+	},
+	"input":
+	{
+		"height": 35.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.doc":
+	{
+		"height": 0.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "AnyLeft.sublime-project",
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"main",
+				"source/views/layouts/main.hbs"
+			],
+			[
+				"server",
+				"server.js"
+			],
+			[
+				"main.h",
+				"source/views/layouts/main.hbs"
+			],
+			[
+				"grun",
+				"gruntfile.js"
+			],
+			[
+				"server2",
+				"server2.js"
+			],
+			[
+				"main.hs",
+				"source/views/layouts/main.hbs"
+			],
+			[
+				"grunt",
+				"gruntfile.js"
+			],
+			[
+				"conf",
+				"config.rb"
+			],
+			[
+				"home.h",
+				"source/views/layouts/home.hbs"
+			],
+			[
+				"inde",
+				"public/index.html"
+			],
+			[
+				"pack",
+				"package.json"
+			],
+			[
+				"packa",
+				"package.json"
+			],
+			[
+				"server.js",
+				"server.js"
+			],
+			[
+				"server.",
+				"server.js"
+			],
+			[
+				"ex",
+				"node_modules/express/lib/express.js"
+			],
+			[
+				"bower.",
+				"bower.json"
+			],
+			[
+				"bower.css",
+				"public/css/bower.css"
+			],
+			[
+				"main.css",
+				"public/css/main.css"
+			],
+			[
+				"main.scs",
+				"source/sass/main.scss"
+			],
+			[
+				"app.ts",
+				"source/ts/app.ts"
+			],
+			[
+				"app.",
+				"public/js/app.js"
+			],
+			[
+				"bower.json",
+				"bower.json"
+			],
+			[
+				"bower.js",
+				"public/js/bower.js"
+			],
+			[
+				"requirejs",
+				"bower_components/require/build/require.min.js"
+			],
+			[
+				"app.js",
+				"public/js/app.js"
+			],
+			[
+				"reactrouter",
+				"bower_components/react-router/build/umd/ReactRouter.js"
+			],
+			[
+				"historty.js",
+				"bower_components/react-router/build/lib/locations/HistoryLocation.js"
+			],
+			[
+				"reactrouter.js",
+				"bower_components/react-router/build/umd/ReactRouter.js"
+			],
+			[
+				"routerjs",
+				"bower_components/react-router/build/lib/createRouter.js"
+			],
+			[
+				"pure.cs",
+				"bower_components/pure/pure.css"
+			],
+			[
+				"packag",
+				"package.json"
+			],
+			[
+				"readm",
+				"README.md"
+			],
+			[
+				"confg",
+				"config.rb"
+			],
+			[
+				"ser",
+				"source/server/server.js"
+			],
+			[
+				"config.r",
+				"config.rb"
+			],
+			[
+				"read",
+				"README.md"
+			],
+			[
+				"gruntfil",
+				"node_modules/grunt-bower-concat/Gruntfile.js"
+			],
+			[
+				"screen.s",
+				"sass/screen.scss"
+			],
+			[
+				"examp",
+				"public/scripts/example.jsx"
+			],
+			[
+				"colors",
+				"Resort.Website/Content/Whistler-Blackcomb/styles/scss/_colors.scss"
+			],
+			[
+				"spuernavscs",
+				"Resort.Website/Content/Whistler-Blackcomb/styles/scss/module/_supernav.scss"
+			],
+			[
+				"titlecardscs",
+				"Resort.Website/Content/Whistler-Blackcomb/styles/scss/module/_title-card.scss"
+			],
+			[
+				"navpromo",
+				"Resort.Website/Views/Renderings/_NavPromo.cshtml"
+			],
+			[
+				"promoitem",
+				"Resort.Website/Views/Renderings/_PromoItem.cshtml"
+			],
+			[
+				"primary",
+				"Resort.Website/Views/Layouts/Partials/_PrimaryNavigation.cshtml"
+			],
+			[
+				"supernavs",
+				"Resort.Website/Content/Whistler-Blackcomb/styles/scss/module/_supernav.scss"
+			],
+			[
+				"titlecardscss",
+				"Resort.Website/Content/Whistler-Blackcomb/styles/scss/module/_title-card.scss"
+			],
+			[
+				"summerscs",
+				"Resort.Website/Content/Whistler-Blackcomb/styles/scss/themes/summer.scss"
+			],
+			[
+				"supernavsc",
+				"Resort.Website/Content/Whistler-Blackcomb/styles/scss/module/_supernav.scss"
+			],
+			[
+				"liftmap.js",
+				"Resort.Website/Content/Whistler-Blackcomb/js/widgets/liftMap.js"
+			],
+			[
+				"carousel.scss",
+				"Resort.Website/Content/Whistler-Blackcomb/styles/scss/module/_carousel.scss"
+			],
+			[
+				"carousel.js",
+				"Resort.Website/Content/Whistler-Blackcomb/js/widgets/carousel.js"
+			],
+			[
+				"comments",
+				"comments.json"
+			],
+			[
+				"gator",
+				"latergator.js"
+			],
+			[
+				"chat",
+				"develop/global/js/global/chat.js"
+			],
+			[
+				"chat.",
+				"develop/global/js/global/chat.js"
+			],
+			[
+				"main.js",
+				"develop/global/js/global/main.js"
+			],
+			[
+				"forceg",
+				"develop/global/js/global/forceguest.js"
+			],
+			[
+				"for",
+				"node_modules/grunt-contrib-uglify/node_modules/lodash/object/forOwnRight.js"
+			],
+			[
+				"playli",
+				"develop/global/js/global/playlist.js"
+			],
+			[
+				"respons",
+				"develop/global/js/global/responsive.js"
+			],
+			[
+				"chat.js",
+				"develop/global/js/global/chat.js"
+			],
+			[
+				"emotes.js",
+				"develop/global/js/features/emotes.js"
+			],
+			[
+				"force",
+				"develop/global/js/global/forceGuest.js"
+			],
+			[
+				"adminc",
+				"develop/global/js/global/admincommands.js"
+			],
+			[
+				"admin",
+				"develop/global/js/global/adminpoll.js"
+			],
+			[
+				"playlist",
+				"develop/global/js/global/playlist.js"
+			],
+			[
+				"expand",
+				"develop/global/js/features/expandButton.js"
+			],
+			[
+				"globalscs",
+				"develop/global/scss/global.scss"
+			],
+			[
+				"global.css",
+				"deploy/global/css/global.css"
+			],
+			[
+				"deploy/ma",
+				"deploy/global/js/main.js"
+			],
+			[
+				"config",
+				"config.rb"
+			],
+			[
+				"con",
+				"config.rb"
+			],
+			[
+				"gloabljs",
+				"global/js/main.js"
+			],
+			[
+				"mainscs",
+				"assets/styles/sass/main.scss"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 344.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

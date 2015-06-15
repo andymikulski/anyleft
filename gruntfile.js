@@ -198,6 +198,21 @@ module.exports = function(grunt) {
           relative: false
         }
       }
+    },
+
+    // should only need to be run once, unless you start playing with breakpoints
+    pure_grids: {
+      'source/sass/_pure-grid.scss': 'this does nothing? okay then',
+      options: {
+        units: 24, // 12-column grid
+
+        mediaQueries: {
+          sm: 'screen and (min-width: 35.5em)', // 568px
+          md: 'screen and (min-width: 48em)', // 768px
+          lg: 'screen and (min-width: 64em)', // 1024px
+          xl: 'screen and (min-width: 80em)' // 1280px
+        }
+      }
     }
   });
 
@@ -209,6 +224,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-ts');
   grunt.loadNpmTasks('grunt-contrib-compass');
   grunt.loadNpmTasks('grunt-tslint');
+  grunt.loadNpmTasks('grunt-pure-grids');
 
   grunt.registerTask('bower', ['bower_concat']);
 
