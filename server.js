@@ -293,6 +293,14 @@ app.get('/logout', function(req, res) {
   req.session.notice = "You have successfully been logged out " + name + "!";
 });
 
+// 404 route
+app.get('*', function(req, res){
+  res.render('404', {
+    user: req.user
+  });
+});
+
+
 
 //==============WEB SOCKETS=============
 io.sockets.on('connection', function(socket) {

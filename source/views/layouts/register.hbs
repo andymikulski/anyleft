@@ -4,33 +4,20 @@
 
 <div class="content pure-g">
   
-  <div class="pure-u-1 pure-u-md-1-2">
-    <form class="pure-form pure-form-stacked" action="/register" method="post">
-      <fieldset>
-          <div class="pure-control-group">
-              <label for="username">Username</label>
-              <input id="username" name="username" type="text" placeholder="Username">
-          </div>
-
-          <div class="pure-control-group">
-              <label for="password">Password</label>
-              <input id="password" name="password" type="password" placeholder="Password">
-          </div>
-
-          <div class="pure-controls">
-              {{!-- <label for="cb" class="pure-checkbox">
-                  <input id="cb" type="checkbox"> I've read the terms and conditions
-              </label> --}}
-
-              <button type="submit" class="pure-button button-success">Sign Up</button>
-          </div>
-      </fieldset>
-    </form>
+  <div class="pure-u-1 pure-u-lg-1-2">
+    {{> user/signup-form}}
   </div>
 
 
-  <div class="pure-u-1 pure-u-md-1-2">
-    
+  <div class="pure-u-1 pure-u-lg-1-2">
+    {{!-- mm that spacing though --}}
+    <h2>&nbsp;</h2>
+    <p>A few people have already started using what they call "the neatest website of 2k15." What are you waiting for? Join now. Do it.</p>
+
+    <h4>
+      Already have an account?
+      <a href="/login">Log in here.</a>
+    </h4>
   </div>
 
 

@@ -1401,24 +1401,28 @@ html h1, html h2, html h3, html h4, html h5, html h6, body h1, body h2, body h3,
 }
 /* line 141, ../../../source/sass/app.scss */
 .pantry .pantry-item__done {
+  -webkit-filter: saturate(0%);
+  filter: saturate(0%);
   opacity: 0.4;
   pointer-events: none;
 }
-/* line 144, ../../../source/sass/app.scss */
+/* line 145, ../../../source/sass/app.scss */
 .pantry .pantry-item__done, .pantry .pantry-item__done * {
   cursor: default;
 }
-/* line 148, ../../../source/sass/app.scss */
+/* line 149, ../../../source/sass/app.scss */
 .pantry .pantry-item__done.is-enabled {
+  -webkit-filter: none;
+  filter: none;
   opacity: 1;
   pointer-events: auto;
 }
-/* line 151, ../../../source/sass/app.scss */
+/* line 153, ../../../source/sass/app.scss */
 .pantry .pantry-item__done.is-enabled img {
   cursor: pointer;
 }
 
-/* line 158, ../../../source/sass/app.scss */
+/* line 160, ../../../source/sass/app.scss */
 .home-blurb {
   padding: 0 1em;
   padding: 0 1rem;

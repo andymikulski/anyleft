@@ -139,6 +139,7 @@ html, body {
 		}
 	}
 	.pantry-item__done {
+		@include filter(saturate(0%));
 		opacity: 0.4;
 		pointer-events: none;
 		&, * {
@@ -146,6 +147,7 @@ html, body {
 		}
 
 		&.is-enabled {
+			@include filter(none);
 			opacity: 1;
 			pointer-events: auto;
 			img {
