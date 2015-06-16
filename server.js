@@ -7,11 +7,12 @@ var fs = require('fs'),
   cookieParser = require('cookie-parser'),
   bodyParser = require('body-parser'),
   methodOverride = require('method-override'),
-  favicon = require('serve-favicon'),
 
   session = require('express-session'),
   redis = require('redis'),
-  client = redis.createClient(11020, 'pub-redis-11020.us-east-1-4.2.ec2.garantiadata.com', {auth_pass: 'e5SeXxJHCA8ZmXYw'}),
+  client = redis.createClient(11020, 'pub-redis-11020.us-east-1-4.2.ec2.garantiadata.com', {
+    auth_pass: 'e5SeXxJHCA8ZmXYw'
+  }),
   RedisStore = require('connect-redis')(session),
   sessionStore = new RedisStore({
     'client': client
@@ -28,8 +29,8 @@ var fs = require('fs'),
   http = require('http').Server(app),
   io = require('socket.io').listen(http),
 
-  config = require('./config.js'), //config file contains all tokens and other private info
-  funct = require('./functions.js'); //funct file contains our helper functions for our Passport and database work
+  config = require('./config.js'); //config file contains all tokens and other private info
+// funct = require('./functions.js'); //funct file contains our helper functions for our Passport and database work
 
 
 app.set('port', (process.env.PORT || 3000));
@@ -294,7 +295,7 @@ app.get('/logout', function(req, res) {
 });
 
 // 404 route
-app.get('*', function(req, res){
+app.get('*', function(req, res) {
   res.render('404', {
     user: req.user
   });
