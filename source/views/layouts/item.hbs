@@ -1,0 +1,65 @@
+<div class="header">
+	<h1>{{ item.name }} ({{item.size}})</h1>
+	{{#if item.yourPantry }}
+		<h2>Item in {{ item.user.displayName }}'s Pantry</h2>
+	{{else}}
+		<h2>Item in {{ item.user.username }}'s Pantry</h2>
+	{{/if}}
+</div>
+
+- projected product depletion
+  - nothing on first run
+  - on second run, display estimated number uses left
+  - on third run, display estimated day you'll run out
+
+- usage info
+  - average consumption rate
+  - 'overall averages' (compared to global userbase)
+
+
+
+
+
+
+
+<div class="content pantry-detail">
+	{{#if pantry.yourPantry }}
+	<p class="has-centered-text has-low-contrast" style="margin-bottom: 5rem">
+		Here you can find the items you are currently tracking.
+	</p>
+	{{/if}}
+
+
+	{{#each pantry.items}}
+		<div class="pure-g pantry-item" data-id="{{ this.id }}" data-index="{{ @index }}">
+			{{#if ../pantry.yourPantry }}
+				<div class="pure-u-1-5 pantry-item__increment">
+					<img src="assets/img/icons/plus.png" />
+				</div>
+			{{/if}}
+			<div class="pure-u-3-5">
+				<h2>{{ this.name }}</h2>
+			</div>
+			{{#if ../pantry.yourPantry }}
+				{{#if this.useCount}}
+					<div class="pure-u-1-5 pantry-item__done is-enabled">
+							<img src="assets/img/icons/solid-ok.png" />
+					</div>
+				{{else}}
+					<div class="pure-u-1-5 pantry-item__done">
+						<img src="assets/img/icons/done.png" />
+					</div>
+				{{/if}}
+			{{/if}}
+		</div>  
+	{{/each}}
+
+	{{#if pantry.yourPantry }}
+		<p class="has-centered-text">
+			Click the <span class="pantry-img-caption"><img src="assets/img/icons/solid-plus.png" /></span> when you use an item.<br />When you are out, click the <span class="pantry-img-caption"><img src="assets/img/icons/solid-ok.png" /></span>.<br />Clicking an item name will bring up more information.
+		</p>
+	{{ else }}
+		{{> global/signup-cta}}
+	{{/if}}
+
+</div>
