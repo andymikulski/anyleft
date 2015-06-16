@@ -1364,24 +1364,30 @@ html h1, html h2, html h3, html h4, html h5, html h6, body h1, body h2, body h3,
   padding: 1rem;
 }
 
-/* line 105, ../../../source/sass/app.scss */
+/* line 104, ../../../source/sass/app.scss */
+.profile-logo {
+  border-radius: 100%;
+  overflow: hidden;
+}
+
+/* line 110, ../../../source/sass/app.scss */
 .pantry .pantry-item {
   margin: 1em auto;
   margin: 1rem auto;
 }
-/* line 109, ../../../source/sass/app.scss */
+/* line 114, ../../../source/sass/app.scss */
 .pantry .pantry-item img {
   display: block;
   margin: 0 auto;
   max-height: 100%;
   max-width: 100%;
 }
-/* line 116, ../../../source/sass/app.scss */
+/* line 121, ../../../source/sass/app.scss */
 .pantry .pantry-item h2 {
   padding: 0 5%;
   text-align: center;
 }
-/* line 122, ../../../source/sass/app.scss */
+/* line 127, ../../../source/sass/app.scss */
 .pantry .pantry-img-caption {
   display: inline-block;
   max-height: 1em;
@@ -1389,45 +1395,45 @@ html h1, html h2, html h3, html h4, html h5, html h6, body h1, body h2, body h3,
   position: relative;
   top: 0.25em;
 }
-/* line 129, ../../../source/sass/app.scss */
+/* line 134, ../../../source/sass/app.scss */
 .pantry .pantry-img-caption img {
   max-height: 100%;
   max-width: 100%;
 }
-/* line 134, ../../../source/sass/app.scss */
+/* line 139, ../../../source/sass/app.scss */
 .pantry .pantry-img-caption + br {
   content: '';
   display: block;
   margin-bottom: 1rem;
 }
-/* line 142, ../../../source/sass/app.scss */
+/* line 147, ../../../source/sass/app.scss */
 .pantry .pantry-item__increment img {
   cursor: pointer;
 }
-/* line 146, ../../../source/sass/app.scss */
+/* line 151, ../../../source/sass/app.scss */
 .pantry .pantry-item__done {
   -webkit-filter: saturate(0%);
   filter: saturate(0%);
   opacity: 0.4;
   pointer-events: none;
 }
-/* line 150, ../../../source/sass/app.scss */
+/* line 155, ../../../source/sass/app.scss */
 .pantry .pantry-item__done, .pantry .pantry-item__done * {
   cursor: default;
 }
-/* line 154, ../../../source/sass/app.scss */
+/* line 159, ../../../source/sass/app.scss */
 .pantry .pantry-item__done.is-enabled {
   -webkit-filter: none;
   filter: none;
   opacity: 1;
   pointer-events: auto;
 }
-/* line 158, ../../../source/sass/app.scss */
+/* line 163, ../../../source/sass/app.scss */
 .pantry .pantry-item__done.is-enabled img {
   cursor: pointer;
 }
 
-/* line 165, ../../../source/sass/app.scss */
+/* line 170, ../../../source/sass/app.scss */
 .home-blurb {
   padding: 0 1em;
   padding: 0 1rem;

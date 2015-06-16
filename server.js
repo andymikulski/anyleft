@@ -33,7 +33,7 @@ var fs = require('fs'),
 // funct = require('./functions.js'); //funct file contains our helper functions for our Passport and database work
 
 
-app.set('port', (process.env.PORT || 3000));
+app.set('port', (process.env.PORT || 80));
 
 
 //===============PASSPORT=================
@@ -96,6 +96,8 @@ passport.use('local-signup', new LocalStrategy({
       });
   }
 ));
+
+
 
 // Simple route middleware to ensure user is authenticated.
 function ensureAuthenticated(req, res, next) {
@@ -162,6 +164,99 @@ app.engine('.hbs', hbs);
 app.set('view engine', '.hbs');
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// setup twitter strat
+passport.use(new TwitterStrategy({
+    consumerKey: 'lOXOSjorNLgTnjYIwa9ym8xxB',
+    consumerSecret: 'iDjBYtaHO8T3LBz6Znpa5MvWJtPmzFLXWcRBxLRQOTORQiDJNC',
+    callbackURL: 'http://www.anyleft.co' + (app.get('port') === '80' ? '' : ':' + app.get('port')) + '/auth/twitter/callback'
+  },
+  function(token, tokenSecret, profile, done) {
+    console.log(['twitter', token, tokenSecret, profile]);
+
+    return done(null, profile);
+    // User.findOrCreate({ twitterId: profile.id }, function (err, user) {
+    // return done(err, user);
+    // });
+  }
+));
+
+app.get('/auth/twitter', passport.authenticate('twitter'));
+
+app.get('/auth/twitter/callback',
+  passport.authenticate('twitter', {
+    failureRedirect: '/login'
+  }),
+  function(req, res) {
+    // Successful authentication, redirect home.
+    res.redirect('/');
+  });
+
+
+passport.use(new FacebookStrategy({
+    clientID: '1458825857762072',
+    clientSecret: 'e403bafa61832e99240d7efbc38710ad',
+    callbackURL: 'http://www.anyleft.co' + (app.get('port') === '80' ? '' : ':' + app.get('port')) + '/auth/facebook/callback',
+    enableProof: false,
+    profileFields: ['id', 'displayName', 'photos']
+  },
+  function(accessToken, refreshToken, profile, done) {
+    // User.findOrCreate({ facebookId: profile.id }, function (err, user) {
+    return done(null, profile);
+    // });
+  }
+));
+
+
+app.get('/auth/facebook', passport.authenticate('facebook'));
+
+app.get('/auth/facebook/callback',
+  passport.authenticate('facebook', {
+    failureRedirect: '/login'
+  }),
+  function(req, res) {
+    // Successful authentication, redirect home.
+    res.redirect('/');
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //===============ROUTES=================
 //displays our homepage
 app.get('/', function(req, res) {
@@ -204,34 +299,29 @@ app.get('/in', function(req, res) {
 // should check if it's the same user,
 // then displays (or redirects if not the same user)
 app.get('/pantry+', function(req, res) {
-  // if (req.isAuthenticated()) {
-  res.render('pantry', {
-    pantry: {
-      'yourPantry': true,
-      'username': 'andymikulski',
-      'id': 123,
-      'items': [{
-        'id': 111,
-        'name': 'Test Product 1',
-        'useCount': 0,
-        'totalCount': null
-      }, {
-        'id': 222,
-        'name': 'Test Product 2',
-        'useCount': 3,
-        'totalCount': 6
-      }]
-    },
-    // faking the user here
-    // (in theory this would be populated anyway by the session stuff)
-    user: {
-      'username': 'andymikulski',
-      'id': 123
-    }
-  });
-  // } else {
-  // res.redirect('/');
-  // }
+  if (req.isAuthenticated()) {
+    res.render('pantry', {
+      pantry: {
+        'yourPantry': true,
+        'user': req.user,
+        'id': 123,
+        'items': [{
+          'id': 111,
+          'name': 'Test Product 1',
+          'useCount': 0,
+          'totalCount': null
+        }, {
+          'id': 222,
+          'name': 'Test Product 2',
+          'useCount': 3,
+          'totalCount': 6
+        }]
+      },
+      user: req.user
+    });
+  } else {
+    res.redirect('/');
+  }
 });
 
 // grab specific pantry
@@ -240,7 +330,10 @@ app.get('/pantry+/:id', function(req, res) {
   res.render('pantry', {
     pantry: {
       'yourPantry': false,
-      'username': 'someone_else',
+      'user': {
+        'username': 'someone_else',
+        'displayName': 'Someone Else'
+      },
       'id': req.params.id,
       'items': [{
         'id': 333,
@@ -253,7 +346,8 @@ app.get('/pantry+/:id', function(req, res) {
         'useCount': 3,
         'totalCount': 6
       }]
-    }
+    },
+    user: req.user
   });
 });
 
@@ -295,6 +389,12 @@ app.get('/logout', function(req, res) {
 });
 
 // 404 route
+app.get('/privacy', function(req, res) {
+  res.send('todo');
+});
+
+
+// 404 route
 app.get('*', function(req, res) {
   res.render('404', {
     user: req.user
@@ -315,5 +415,5 @@ io.sockets.on('connection', function(socket) {
 //===============PORT=================
 
 http.listen(app.get('port'), function() {
-  console.log('listening on *:3000');
+  console.log('listening on *:' + app.get('port'));
 });

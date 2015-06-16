@@ -1,5 +1,13 @@
 <div class="header">
-	<h1>{{ pantry.username }}'s Pantry</h1>
+
+	{{#if pantry.yourPantry }}
+		{{#if user.photos.length }}
+			<img class="profile-logo" src="{{user.photos.0.value}}" />
+		{{/if}}
+		<h1>{{ pantry.user.displayName }}'s Pantry</h1>
+	{{else}}
+		<h1>{{ pantry.user.username }}'s Pantry</h1>
+	{{/if}}
 	<h2>Tracking {{ pantry.items.length }} items</h2>
 </div>
 
