@@ -11,7 +11,7 @@ var fs = require('fs'),
 
   session = require('express-session'),
   redis = require('redis'),
-  client = redis.createClient(6379, 'localhost'),
+  client = redis.createClient(11020, 'pub-redis-11020.us-east-1-4.2.ec2.garantiadata.com', {auth_pass: 'e5SeXxJHCA8ZmXYw'}),
   RedisStore = require('connect-redis')(session),
   sessionStore = new RedisStore({
     'client': client
