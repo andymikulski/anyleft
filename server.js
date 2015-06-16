@@ -80,7 +80,7 @@ passport.use('local-signup', new LocalStrategy({
   }, //allows us to pass back the request to the callback
   function(req, username, password, done) {
     done(null, {'displayName': username});
-    
+
     // funct.localReg(username, password)
     //   .then(function(user) {
     //     if (user) {
@@ -194,7 +194,7 @@ app.set('view engine', '.hbs');
 passport.use(new TwitterStrategy({
     consumerKey: 'lOXOSjorNLgTnjYIwa9ym8xxB',
     consumerSecret: 'iDjBYtaHO8T3LBz6Znpa5MvWJtPmzFLXWcRBxLRQOTORQiDJNC',
-    callbackURL: 'http://www.anyleft.co' + (app.get('port') === '80' ? '' : ':' + app.get('port')) + '/auth/twitter/callback'
+    callbackURL: 'http://www.anyleft.co/auth/twitter/callback'
   },
   function(token, tokenSecret, profile, done) {
     console.log(['twitter', token, tokenSecret, profile]);
@@ -221,7 +221,7 @@ app.get('/auth/twitter/callback',
 passport.use(new FacebookStrategy({
     clientID: '1458825857762072',
     clientSecret: 'e403bafa61832e99240d7efbc38710ad',
-    callbackURL: 'http://www.anyleft.co' + (app.get('port') === '80' ? '' : ':' + app.get('port')) + '/auth/facebook/callback',
+    callbackURL: 'http://www.anyleft.co/auth/facebook/callback',
     enableProof: false,
     profileFields: ['id', 'displayName', 'photos']
   },
