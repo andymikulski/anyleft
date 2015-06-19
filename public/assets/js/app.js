@@ -1,15 +1,15 @@
-define(["require", "exports"], function (require, exports) {
+define(["require", "exports", 'BurgerMenu'], function (require, exports, BurgerMenu) {
     /**
     * Application class. Starts the app.
     * @class App
     */
     var App = (function () {
         function App() {
-            console.log('hello');
-            return;
+            var app = this;
+            app.init();
         }
         App.prototype.init = function () {
-            return;
+            new BurgerMenu($('[data-widget="burgerMenu"]'));
         };
         return App;
     })();

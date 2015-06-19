@@ -36,6 +36,24 @@ var fs = require('fs'),
 app.set('port', (process.env.PORT || 80));
 
 
+
+// redis/db hookups
+client.on('error', function(err) {
+  console.log('DB Error: ' + err);
+});
+
+// client.set('string key', 'string val');
+// client.hset('hash key', 'hashtest 1', 'some value', redis.print);
+// client.hset(['hash key', 'hashtest 2', 'some other value'], redis.print);
+// client.hkeys('hash key', function(err, replies) {
+  // console.log(replies.length + ' replies:');
+  // replies.forEach(function (reply, i) {
+  // console.log('    ' + i + ': ' + reply);
+  // });
+  // client.quit();
+// });
+
+
 //===============PASSPORT=================
 
 // Passport session setup.
@@ -54,49 +72,55 @@ passport.use('local-signin', new LocalStrategy({
     passReqToCallback: true
   }, //allows us to pass back the request to the callback
   function(req, username, password, done) {
-    done(null, {'displayName': username});
-    // funct.localAuth(username, password)
-    //   .then(function(user) {
-    //     if (user) {
-    //       console.log("LOGGED IN AS: " + user.username);
-    //       req.session.success = 'You are successfully logged in ' + user.username + '!';
-    //       done(null, user);
-    //     }
-    //     if (!user) {
-    //       console.log("COULD NOT LOG IN");
-    //       req.session.error = 'Could not log user in. Please try again.'; //inform user could not log them in
-    //       done(null, user);
-    //     }
-    //   })
-    //   .fail(function(err) {
-    //     console.log(err.body);
-    //   });
+
+    getMemberAndStuff(username, provider, {
+      'username': username,
+      'password': password
+    }, done);
   }
 ));
+
+var getMemberAndStuff = function(userID, provider, providedInfo, callback) {
+  var storedUser = provider + ':' + userID;
+
+  client.hmget(provider + ':' + userID, function(err, foundUserInfo) {
+    if (!foundUserInfo) {
+      setupMemberStuff(storedUser, providedInfo, callback);
+    } else {
+      console.log(['foundUserInfo', foundUserInfo]);
+
+      // client.smembers(storedUser + ':tracked', function(err, trackedItems) {
+      //   if(!trackedItems || !trackedItems.length){
+
+      //   }
+      // });
+
+      callback && callback(null, foundUserInfo);
+    }
+  });
+};
+
+var setupMemberStuff = function(user, providedInfo, callback) {
+  var newMemberInfo = {
+    'displayName': providedInfo.displayName,
+    'id': user,
+    'items': [],
+    'username': providedInfo.username || user,
+    'password': providedInfo.password,
+    'photo': providedInfo.photos && providedInfo.photos.length && providedInfo.photos[0]
+  };
+
+  client.hmset(user, newMemberInfo, function(err, res) {
+    callback && callback(null, newMemberInfo);
+  });
+};
 
 // Use the LocalStrategy within Passport to Register/"signup" users.
 passport.use('local-signup', new LocalStrategy({
     passReqToCallback: true
   }, //allows us to pass back the request to the callback
   function(req, username, password, done) {
-    done(null, {'displayName': username});
-
-    // funct.localReg(username, password)
-    //   .then(function(user) {
-    //     if (user) {
-    //       console.log("REGISTERED: " + user.username);
-    //       req.session.success = 'You are successfully registered and logged in ' + user.username + '!';
-    //       done(null, user);
-    //     }
-    //     if (!user) {
-    //       console.log("COULD NOT REGISTER");
-    //       req.session.error = 'That username is already in use, please try a different one.'; //inform user could not log them in
-    //       done(null, user);
-    //     }
-    //   })
-    //   .fail(function(err) {
-    //     console.log(err.body);
-    //   });
+    getMemberAndStuff(username, 'local', {}, done);
   }
 ));
 
@@ -168,28 +192,6 @@ app.set('view engine', '.hbs');
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // setup twitter strat
 passport.use(new TwitterStrategy({
     consumerKey: 'lOXOSjorNLgTnjYIwa9ym8xxB',
@@ -199,7 +201,9 @@ passport.use(new TwitterStrategy({
   function(token, tokenSecret, profile, done) {
     console.log(['twitter', token, tokenSecret, profile]);
 
-    return done(null, profile);
+    getMemberAndStuff(profile.id, 'twitter', profile, done);
+
+    // return done(null, profile);
     // User.findOrCreate({ twitterId: profile.id }, function (err, user) {
     // return done(err, user);
     // });
@@ -214,7 +218,7 @@ app.get('/auth/twitter/callback',
   }),
   function(req, res) {
     // Successful authentication, redirect home.
-    res.redirect('/');
+    // res.redirect('/');
   });
 
 
@@ -226,8 +230,11 @@ passport.use(new FacebookStrategy({
     profileFields: ['id', 'displayName', 'photos']
   },
   function(accessToken, refreshToken, profile, done) {
+
+    getMemberAndStuff(profile.id, 'facebook', profile, done);
+
     // User.findOrCreate({ facebookId: profile.id }, function (err, user) {
-    return done(null, profile);
+    // return done(null, profile);
     // });
   }
 ));
@@ -246,25 +253,11 @@ app.get('/auth/facebook/callback',
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //===============ROUTES=================
 //displays our homepage
 app.get('/', function(req, res) {
   if (req.isAuthenticated()) {
-    res.redirect('pantry');
+    res.redirect('/pantry');
   } else {
     res.render('home', {
       user: req.user
@@ -275,14 +268,14 @@ app.get('/', function(req, res) {
 //displays our signup page
 app.get('/log-?in', function(req, res) {
   if (req.isAuthenticated()) {
-    res.redirect('pantry');
+    res.redirect('/pantry');
   } else {
     res.render('login');
   }
 });
 app.get('/register', function(req, res) {
   if (req.isAuthenticated()) {
-    res.redirect('pantry');
+    res.redirect('/pantry');
   } else {
     res.render('register');
   }
@@ -290,7 +283,7 @@ app.get('/register', function(req, res) {
 
 app.get('/in', function(req, res) {
   if (req.isAuthenticated()) {
-    res.redirect('pantry');
+    res.redirect('/pantry');
   } else {
     res.render('getin');
   }
@@ -303,27 +296,55 @@ app.get('/in', function(req, res) {
 // then displays (or redirects if not the same user)
 app.get('/pantry+', function(req, res) {
   if (req.isAuthenticated()) {
+    console.log('asdf', req.user);
     res.render('pantry', {
       pantry: {
         'yourPantry': true,
         'user': req.user,
         'id': 123,
-        'items': [{
-          'id': 111,
-          'name': 'Test Product 1',
-          'useCount': 0,
-          'totalCount': null
-        }, {
-          'id': 222,
-          'name': 'Test Product 2',
-          'useCount': 3,
-          'totalCount': 6
-        }]
+        'items': req.user.items || []
       },
       user: req.user
     });
   } else {
     res.redirect('/');
+  }
+});
+
+app.get('/pantry/add', function(req, res) {
+  if (req.isAuthenticated()) {
+    res.render('pantry-add', {
+      user: req.user
+    });
+  } else {
+    res.redirect('/in');
+  }
+});
+
+app.post('/pantry/add', function(req, res) {
+  if (req.isAuthenticated()) {
+
+
+    var newItemInfo = {
+      'user': user,
+      'name': req.body.name,
+      'size': req.body.size,
+      'unit': req.body.unit
+    };
+
+    client.hmset(user, newMemberInfo, function(err, res) {
+      callback && callback(null, newMemberInfo);
+    });
+
+    client.hset()
+    client.hset("hash key", "hashtest 1", "some value", function(err, success){
+      res.redirect('/pantry');
+    });
+    // res.render('pantry-add', {
+    //   user: req.user
+    // });
+  } else {
+    res.redirect('/in');
   }
 });
 
@@ -338,6 +359,7 @@ app.get('/pantry+/:id', function(req, res) {
         'displayName': 'Someone Else'
       },
       'id': req.params.id,
+      // todo: read other user's pantry
       'items': [{
         'id': 333,
         'name': 'Test Product 3',
@@ -391,7 +413,7 @@ app.get('/logout', function(req, res) {
   req.session.notice = "You have successfully been logged out " + name + "!";
 });
 
-// 404 route
+// needed for fb i think
 app.get('/privacy', function(req, res) {
   res.send('todo');
 });
@@ -403,7 +425,6 @@ app.get('*', function(req, res) {
     user: req.user
   });
 });
-
 
 
 //==============WEB SOCKETS=============

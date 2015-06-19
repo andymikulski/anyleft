@@ -2,6 +2,15 @@
 @import "pure-grid";
 @import "pure-nav";
 
+$red: rgb(202, 60, 60);
+
+// weird pure override
+legend,
+.pure-form .pure-checkbox,
+.pure-form .pure-radio {
+	letter-spacing: 0;
+}
+
 html, body {
 	height: 100%;
 	width: 100%;
@@ -38,7 +47,6 @@ html, body {
         color: #fff;
         border-radius: 4px;
         text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-		background-color: #1CB841;
 	}
 
 	&.button-xsmall {
@@ -56,6 +64,31 @@ html, body {
     &.button-xlarge {
         font-size: 125%;
     }
+
+    &.button-success,
+    &.button-error,
+    &.button-warning,
+    &.button-secondary {
+        color: white;
+        border-radius: 4px;
+        text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    }
+
+    &.button-success {
+		background-color: #88C057;
+    }
+
+    &.button-error {
+        background: rgb(202, 60, 60); /* this is a maroon */
+    }
+
+    &.button-warning {
+        background: rgb(223, 117, 20); /* this is an orange */
+    }
+
+    &.button-secondary {
+        background: rgb(66, 184, 221); /* this is a light blue */
+    }
 }
 
 .pure-g {
@@ -70,6 +103,12 @@ html, body {
 
 #layout, #main, .content {
 	min-height: 100%;
+}
+
+#layout {
+	@include transition(all 0.2s ease-out);
+	left: 0;
+	position: relative;
 }
 
 
@@ -104,6 +143,18 @@ html, body {
 .profile-logo {
 	border-radius: 100%;
 	overflow: hidden;
+}
+
+.header {
+	small {}
+	a {
+		display: inline-block;
+		color: $red;
+		text-decoration: none;
+		border-bottom: 1px dotted;
+		margin-bottom: 4em;
+		margin-bottom: 4rem;
+	}
 }
 
 .pantry {
@@ -170,4 +221,41 @@ html, body {
 .home-blurb {
 	padding: 0 1em;
 	padding: 0 1rem;
+}
+
+
+.pantry-add-item {
+	input, select {
+		@media(min-width: 48em) {
+			font-size: 1.5vw !important;
+		}
+		text-align: center;
+		text-overflow: ellipsis;
+	}
+	input#name {
+		font-size: 2.5vw !important;
+		text-align: center;
+		text-overflow: ellipsis;
+	}
+
+	.add-item__buttons {
+		text-align: center;
+		margin-top: 5em;
+		margin-top: 5rem;
+		.pure-button {
+			margin: 0 auto 1em;
+			margin: 0 auto 1rem;
+
+			width: 50%;
+
+			&.button-xlarge {
+				min-width: 150px;
+				white-space: normal;
+			}
+			&.button-small {
+				min-width: 85px;
+				width: 35%;
+			}
+		}
+	}
 }

@@ -1,3 +1,6 @@
+declare var $: any;
+import BurgerMenu = require('BurgerMenu');
+
 export = App;
 /**
 * Application class. Starts the app.
@@ -6,12 +9,13 @@ export = App;
 class App {
 
   constructor() {
-  	console.log('hello');
-    return;
+	  var app = this;
+
+	  app.init();
   }
 
   public init() {
-  	return;
+	  new BurgerMenu($('[data-widget="burgerMenu"]'));
   }
 
 }

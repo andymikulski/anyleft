@@ -1,0 +1,71 @@
+<div class="header">
+    <img class="profile-logo" src="assets/img/icons/solid-plus.png" />
+    <h1>Track new item</h1>
+    <h2>Adding new item to {{ user.displayName }}'s Pantry</h1>
+    <small><a href="/logout">Not {{ user.displayName }}?</a></small>
+</div>
+
+<div class="content pantry">
+    <div class="pure-g pantry-add-item">
+        <form class="pure-form pure-form-stacked">
+            <fieldset>
+                {{!-- <legend>Legend</legend> --}}
+
+                <div class="pure-g">
+                    <div class="pure-u-1">
+                        <label for="name">Item Name</label>
+                        <input id="name" class="pure-u-1" type="text">
+                    </div>
+                </div>
+                <div class="pure-g">
+                    <div class="pure-u-1 pure-u-md-1-2">
+                        <label for="unit">Item Unit <small>(12oz, 20g, 10 apples, etc)</small></label>
+                        <select id="unit" class="pure-u-1 pure-u-md-23-24">
+                            <option>MilliLiters (ml)</option>
+                            <option>Liters (l)</option>
+                            <option>Ounces (oz)</option>
+                            <option>Gallon (gal)</option>
+                            <option>Pounds (lbs)</option>
+                            <option>Kilos (kg)</option>
+                        </select>
+                    </div>
+                    <div class="pure-u-1 pure-u-md-1-2">
+                        <label for="unit">Item Quantity <small>(12oz, 20g, 10 apples, etc)</small></label>
+                        <input id="unit" class="pure-u-1" type="text">
+                    </div>
+                </div>
+
+                <div class="pure-g add-item__buttons">
+                    <div class="pure-u-1">
+                        <span class="has-low-contrast" style="margin-bottom: 0.5em; display: block;">Add V05 Shampoo (Strawberry) - 12oz. to your Pantry?</span>
+                        <button type="submit" class="pure-button pure-button-primary button-xlarge">Add</button>
+                    </div>
+                    <div class="pure-u-1">
+                        <a href="/pantry" class="pure-button button-error button-small">Cancel</a>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+
+
+        {{!-- <div class="pure-u-1-5 pantry-item__increment">
+            <img src="assets/img/icons/target.png" />
+        </div>
+        <div class="pure-u-3-5">
+            <h2>name</h2>
+        </div>
+        <div class="pure-u-1-5 pantry-item__done is-enabled">
+                <img src="assets/img/icons/solid-ok.png" />
+        </div>
+        <div class="pure-u-1-5 pantry-item__done">
+            <img src="assets/img/icons/done.png" />
+        </div> --}}
+    </div>
+
+    {{!-- 
+
+    <p class="has-centered-text">
+        Click the <span class="pantry-img-caption"><img src="assets/img/icons/target.png" /></span> when you use an item.<br />When you are out, click the <span class="pantry-img-caption"><img src="assets/img/icons/solid-ok.png" /></span>.<br />Clicking an item name will bring up more information.
+    </p>
+ --}}
+</div>

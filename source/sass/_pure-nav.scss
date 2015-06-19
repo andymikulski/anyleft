@@ -33,8 +33,7 @@ $black_70: rgba(0,0,0,0.7);
     height: auto;
 }
 #layout {
-    //Instead of the line below you could use @includetransition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
-    transition: all 0.2s ease-out;
+    @include transition(all 0.2s ease-out);
     position: relative;
     padding-left: 0;
     &.active {
@@ -48,8 +47,7 @@ $black_70: rgba(0,0,0,0.7);
     }
 }
 #menu {
-    //Instead of the line below you could use @includetransition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
-    transition: all 0.2s ease-out;
+    @include transition(all 0.2s ease-out);
     margin-left: -150px;
     width: 150px;
     position: fixed;

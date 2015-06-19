@@ -1,5 +1,4 @@
 <div class="header">
-
 	{{#if pantry.yourPantry }}
 		{{#if user.photos.length }}
 			<img class="profile-logo" src="{{user.photos.0.value}}" />
@@ -8,7 +7,12 @@
 	{{else}}
 		<h1>{{ pantry.user.username }}'s Pantry</h1>
 	{{/if}}
+
+	{{#if pantry.items.length }}
 	<h2>Tracking {{ pantry.items.length }} items</h2>
+	{{else}}
+	<h2>You are not currently tracking anything.</h2>
+	{{/if}}
 </div>
 
 <div class="content pantry">
@@ -23,7 +27,7 @@
 		<div class="pure-g pantry-item" data-id="{{ this.id }}" data-index="{{ @index }}">
 			{{#if ../pantry.yourPantry }}
 				<div class="pure-u-1-5 pantry-item__increment">
-					<img src="assets/img/icons/plus.png" />
+					<img src="assets/img/icons/target.png" />
 				</div>
 			{{/if}}
 			<div class="pure-u-3-5">
@@ -44,9 +48,18 @@
 	{{/each}}
 
 	{{#if pantry.yourPantry }}
-		<p class="has-centered-text">
-			Click the <span class="pantry-img-caption"><img src="assets/img/icons/solid-plus.png" /></span> when you use an item.<br />When you are out, click the <span class="pantry-img-caption"><img src="assets/img/icons/solid-ok.png" /></span>.<br />Clicking an item name will bring up more information.
-		</p>
+		
+		<div class="pantry-add">
+			<a href="/pantry/add">
+				<img src="assets/img/icons/solid-plus.png" />
+				<span>Track New Item</span>
+			</a>
+		</div>
+
+
+		{{!-- <p class="has-centered-text"> --}}
+			{{!-- Click the <span class="pantry-img-caption"><img src="assets/img/icons/target.png" /></span> when you use an item.<br />When you are out, click the <span class="pantry-img-caption"><img src="assets/img/icons/solid-ok.png" /></span>.<br />Clicking an item name will bring up more information. --}}
+		{{!-- </p> --}}
 	{{ else }}
 		{{> global/signup-cta}}
 	{{/if}}

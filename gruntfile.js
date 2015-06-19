@@ -183,6 +183,13 @@ module.exports = function(grunt) {
         options: {
           livereload: true
         }
+      },
+      server: {
+        files: ['server.js'],
+        tasks: [],
+        options: {
+          livereload: true
+        }
       }
     },
 
