@@ -1,7 +1,8 @@
 <div class="header">
+
 	{{#if pantry.yourPantry }}
-		{{#if user.photos.length }}
-			<img class="profile-logo" src="{{user.photos.0.value}}" />
+		{{#if user.photo }}
+			<img class="profile-logo" src="{{user.photo}}" />
 		{{/if}}
 		<h1>{{ pantry.user.displayName }}'s Pantry</h1>
 	{{else}}

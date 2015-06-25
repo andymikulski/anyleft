@@ -1,4 +1,5 @@
-var fs = require('fs'),
+var config = require('./config.js'), //config file contains all tokens and other private info
+  fs = require('fs'),
   path = require('path'),
   express = require('express'),
   passport = require('passport'),
@@ -10,8 +11,8 @@ var fs = require('fs'),
 
   session = require('express-session'),
   redis = require('redis'),
-  client = redis.createClient(11020, 'pub-redis-11020.us-east-1-4.2.ec2.garantiadata.com', {
-    auth_pass: 'e5SeXxJHCA8ZmXYw'
+  client = redis.createClient(config.dbPort, config.db, {
+    auth_pass: config.dbPass
   }),
   RedisStore = require('connect-redis')(session),
   sessionStore = new RedisStore({
@@ -27,10 +28,8 @@ var fs = require('fs'),
 
   app = express(),
   http = require('http').Server(app),
-  io = require('socket.io').listen(http),
+  io = require('socket.io').listen(http);
 
-  config = require('./config.js'); //config file contains all tokens and other private info
-// funct = require('./functions.js'); //funct file contains our helper functions for our Passport and database work
 
 
 app.set('port', (process.env.PORT || 80));
@@ -83,14 +82,27 @@ passport.use('local-signin', new LocalStrategy({
 var getMemberAndStuff = function(userID, provider, providedInfo, callback) {
   var storedUser = provider + ':' + userID;
 
-  client.hgetall(provider + ':' + userID, function(err, foundUserInfo) {
+  client.hgetall(storedUser, function(err, foundUserInfo) {
     console.log('getasdf', err, foundUserInfo, '\n\n');
     if (!foundUserInfo) {
       console.log('no info; new user\n\n');
+      providedInfo.provider = provider;
       setupMemberStuff(storedUser, providedInfo, callback);
     } else {
       console.log('foundUserInfo', foundUserInfo, '\n');
+      var photo = '';
 
+      switch (provider) {
+        case 'twitter':
+        case 'facebook':
+          photo = (providedInfo.photos && providedInfo.photos.length && providedInfo.photos[0].value) || '';
+          break;
+        default:
+          photo = '';
+      }
+
+      // update fb photo
+      client.hset(storedUser, 'photo', photo);
 
       client.smembers(storedUser + ':tracked', function(err, trackedItems) {
         console.log('looking for ', storedUser + ':tracked', err, trackedItems);
@@ -129,14 +141,24 @@ var getMemberItems = function(userID, callback) {
 };
 
 var setupMemberStuff = function(user, providedInfo, callback) {
+  console.log(['photos', providedInfo.photos]);
   var newMemberInfo = {
     'displayName': providedInfo.displayName,
     'id': user,
     'items': [],
     'username': providedInfo.username || user,
     'password': providedInfo.password,
-    'photo': providedInfo.photos && providedInfo.photos.length && providedInfo.photos[0]
+    'photo': '' //providedInfo.photos && providedInfo.photos.length && providedInfo.photos[0]
   };
+
+  switch (providedInfo.provider) {
+    case 'twitter':
+    case 'facebook':
+      newMemberInfo.photo = (providedInfo.photos && providedInfo.photos.length && providedInfo.photos[0].value) || '';
+      break;
+    default:
+      newMemberInfo.photo = '';
+  }
 
   client.hmset(user, newMemberInfo, function(err, res) {
     callback && callback(null, newMemberInfo);
@@ -177,7 +199,7 @@ app.use(bodyParser.json());
 
 app.use(methodOverride());
 app.use(session({
-  secret: 'supersecret',
+  secret: config.sessionSecret,
   name: 'anyleft-sesh',
   store: sessionStore,
   resave: true,
@@ -223,8 +245,8 @@ app.set('view engine', '.hbs');
 
 // setup twitter strat
 passport.use(new TwitterStrategy({
-    consumerKey: 'lOXOSjorNLgTnjYIwa9ym8xxB',
-    consumerSecret: 'iDjBYtaHO8T3LBz6Znpa5MvWJtPmzFLXWcRBxLRQOTORQiDJNC',
+    consumerKey: config.twitter.key,
+    consumerSecret: config.twitter.secret,
     callbackURL: 'http://www.anyleft.co/auth/twitter/callback'
   },
   function(token, tokenSecret, profile, done) {
@@ -247,13 +269,13 @@ app.get('/auth/twitter/callback',
   }),
   function(req, res) {
     // Successful authentication, redirect home.
-    // res.redirect('/');
+    res.redirect('/');
   });
 
 
 passport.use(new FacebookStrategy({
-    clientID: '1458825857762072',
-    clientSecret: 'e403bafa61832e99240d7efbc38710ad',
+    clientID: config.facebook.id,
+    clientSecret: config.facebook.secret,
     callbackURL: 'http://www.anyleft.co/auth/facebook/callback',
     enableProof: false,
     profileFields: ['id', 'displayName', 'photos']
@@ -496,7 +518,10 @@ app.get('/pantry+/:id', function(req, res) {
 
 
 app.get('/item+/:id', function(req, res) {
-  res.send('ok');
+  res.setHeader('Content-Type', 'application/json');
+  res.send(JSON.stringify({
+    'user': req.user
+  }));
 });
 
 //sends the request through our local signup strategy, and if successful takes user to homepage, otherwise returns then to signin page
