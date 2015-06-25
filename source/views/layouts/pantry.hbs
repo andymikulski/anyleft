@@ -24,25 +24,31 @@
 
 
 	{{#each pantry.items}}
-		<div class="pure-g pantry-item" data-id="{{ this.id }}" data-index="{{ @index }}">
+		<div class="pure-g pantry-item" data-id="{{ this.itemID }}" data-index="{{ @index }}">
 			{{#if ../pantry.yourPantry }}
 				<div class="pure-u-1-5 pantry-item__increment">
-					<img src="assets/img/icons/target.png" />
+					<a href="/item/ping/{{ this.itemID }}">
+						<img src="assets/img/icons/target.png" />
+					</a>
 				</div>
 			{{/if}}
 			<div class="pure-u-3-5">
-				<h2>{{ this.name }}</h2>
+				<h2><a href="/item/{{ this.itemID }}">{{ this.name }} ( {{ this.pings }} / {{ this.maxPings }} )</a></h2>
 			</div>
 			{{#if ../pantry.yourPantry }}
-				{{#if this.useCount}}
-					<div class="pure-u-1-5 pantry-item__done is-enabled">
+				<div class="pure-u-1-5 pantry-item__done is-enabled">{{!-- {{#unless this.isDone }}is-enabled{{/unless}}"> --}}
+					{{!-- {{#unless this.isDone }} --}}
+					<a href="/item/done/{{ this.itemID }}">
+					{{!-- {{/unless}} --}}
+						{{#if this.pings }}
 							<img src="assets/img/icons/solid-ok.png" />
-					</div>
-				{{else}}
-					<div class="pure-u-1-5 pantry-item__done">
-						<img src="assets/img/icons/done.png" />
-					</div>
-				{{/if}}
+						{{else}}
+							<img src="assets/img/icons/done.png" />
+						{{/if}}
+					{{!-- {{#unless this.isDone }} --}}
+					</a>
+					{{!-- {{/unless}} --}}
+				</div>
 			{{/if}}
 		</div>  
 	{{/each}}
