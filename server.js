@@ -372,7 +372,7 @@ app.post('/pantry/add-item', function(req, res) {
       'size': req.body.size,
       'unit': req.body.unit,
       'pings': 0,
-      'maxPings': -1,
+      'maxPings': 0,
       'numUses': 0,
       'isDone': false,
       'itemID': (req.user.id + ':' + req.body.name + ':' + req.body.size + ':' + req.body.unit + ':' + Date.now()).replace(/ /g, '-')
@@ -386,7 +386,7 @@ app.post('/pantry/add-item', function(req, res) {
     // set the number key for the number of pings, max pings
     newItemQueue.set(newItemInfo.itemID + ':uses', 0);
     newItemQueue.set(newItemInfo.itemID + ':pings', 0);
-    newItemQueue.set(newItemInfo.itemID + ':maxPings', -1);
+    newItemQueue.set(newItemInfo.itemID + ':maxPings', 0);
     // hold the data of the item we're tracking
     newItemQueue.hmset(newItemInfo.itemID, newItemInfo);
 
@@ -406,10 +406,23 @@ app.post('/pantry/add-item', function(req, res) {
 
 
 app.get('/item/ping/:id', function(req, res) {
-  client.incr(req.params.id + ':pings', function(err, reply) {
-    client.hset(req.params.id, 'pings', reply, function(err, setReply) {
-      res.redirect('/pantry');
+  var pingMulti = client.multi(),
+    pingInfo = {
+      'time': Date.now(),
+      'id': req.user.id + ':' + req.params.id + ':ping:' + Date.now()
+    };
+
+  pingMulti.zadd(req.params.id + ':pingHistory', Date.now(), pingInfo.id);
+
+  pingMulti.exec(function(err, pingRes) {
+
+    // update ping countns and stuff, then send back to the pantry
+    client.incr(req.params.id + ':pings', function(err, reply) {
+      client.hset(req.params.id, 'pings', reply, function(err, setReply) {
+        res.redirect('/pantry');
+      });
     });
+
   });
 });
 
@@ -429,8 +442,6 @@ app.get('/item/done/:id', function(req, res) {
 
     var updateMulti = client.multi();
 
-    console.log('uasdfasdfasdfasdfasdf', numPings, maxPings);
-
     if (numPings > maxPings) {
       updateMulti.set(itemId + ':maxPings', numPings);
       updateMulti.hset(itemId, 'maxPings', numPings);
@@ -440,6 +451,7 @@ app.get('/item/done/:id', function(req, res) {
     updateMulti.hset(itemId, 'isDone', true);
     updateMulti.hset(itemId, 'pings', 0);
     updateMulti.set(itemId + ':pings', 0);
+    updateMulti.del(itemId + ':pingHistory', 0);
 
 
     updateMulti.exec(function(err, updateReply) {
